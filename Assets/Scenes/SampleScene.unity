@@ -309,6 +309,8 @@ MonoBehaviour:
   foodEnergy: {x: 0.2, y: 2}
   foodDensity: 2
   FoodCreatedPerWave: 4
+  MaxChanges: 10
+  ChangeDistance: 0.2
 --- !u!4 &2144896089
 Transform:
   m_ObjectHideFlags: 0
@@ -334,6 +336,10 @@ PrefabInstance:
       propertyPath: Speed
       value: 1.01
       objectReference: {fileID: 0}
+    - target: {fileID: 2959889540464463214, guid: 4d0e2c74614e5b241b861db374000eb5, type: 3}
+      propertyPath: WS
+      value: 
+      objectReference: {fileID: 2144896087}
     - target: {fileID: 8633621625076175812, guid: 4d0e2c74614e5b241b861db374000eb5, type: 3}
       propertyPath: m_Name
       value: starter

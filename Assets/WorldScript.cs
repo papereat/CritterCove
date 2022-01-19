@@ -10,6 +10,9 @@ public class WorldScript : MonoBehaviour
     public Vector2 foodEnergy;
     public float foodDensity;
     public int FoodCreatedPerWave;
+
+    public int MaxChanges;
+    public float ChangeDistance;
     float foodScale;
     // Start is called before the first frame update
     void Start()

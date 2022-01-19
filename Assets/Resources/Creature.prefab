@@ -118,11 +118,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8633621625076175814}
-  - component: {fileID: 8633621625076175813}
   - component: {fileID: 8633621625076175815}
+  - component: {fileID: 2959889540464463214}
+  - component: {fileID: 411588980}
+  - component: {fileID: 8633621625076175813}
   - component: {fileID: -1612799307114811123}
   - component: {fileID: 9079154403733115576}
-  - component: {fileID: 411588980}
   m_Layer: 0
   m_Name: Creature
   m_TagString: Untagged
@@ -145,6 +146,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8633621625076175815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8633621625076175812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef1f4c5f3d2511419a14682d737831f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRad: 2
+  viewAngle: 360
+  visiblePlayer: []
+--- !u!114 &2959889540464463214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8633621625076175812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09b634a22fd3d34391e37a256bcdeb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FOV: {fileID: 8633621625076175815}
+  Speed: 1
+  RotationSpeed: 90
+  ViewDistnace: 1
+  ViewAngle: 45
+  energy: 2
+  health: 100
+--- !u!114 &411588980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8633621625076175812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08450a5d8b854d840b980fcd835d3a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FOV: {fileID: 8633621625076175815}
+  rb: {fileID: -1612799307114811123}
+  MouthColider: {fileID: 9079154403733115576}
+  Sts: {fileID: 2959889540464463214}
 --- !u!212 &8633621625076175813
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -196,21 +247,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8633621625076175815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8633621625076175812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef1f4c5f3d2511419a14682d737831f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewRad: 2
-  viewAngle: 360
-  visiblePlayer: []
 --- !u!50 &-1612799307114811123
 Rigidbody2D:
   serializedVersion: 4
@@ -248,25 +284,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &411588980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8633621625076175812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08450a5d8b854d840b980fcd835d3a15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FOV: {fileID: 8633621625076175815}
-  rb: {fileID: -1612799307114811123}
-  MouthColider: {fileID: 9079154403733115576}
-  CreaturePrefab: {fileID: 8633621625076175812}
-  Speed: 1
-  RotationSpeed: 155
-  ViewDistnace: 3.75
-  ViewAngle: 53.63
-  energy: 2
-  health: 100
