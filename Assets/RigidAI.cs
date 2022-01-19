@@ -20,8 +20,17 @@ public class RigidAI : MonoBehaviour
         var Rotation=0f;
         if(FOV.visiblePlayer.Count==0)
         {
-            Rotation=.3f;
-            Movemnt=.5f;
+            if(Sts.energy<=1)
+            {
+                Rotation=.1f;
+                Movemnt=.7f;
+            }
+            else
+            {
+                Rotation=.3f;
+                Movemnt=.5f;
+            }
+            
         }
         else
         {
