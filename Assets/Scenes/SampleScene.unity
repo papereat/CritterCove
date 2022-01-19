@@ -928,10 +928,11 @@ MonoBehaviour:
   FoodCollection: {fileID: 1256074137}
   CritterPrefab: {fileID: 8633621625076175812, guid: 4d0e2c74614e5b241b861db374000eb5, type: 3}
   CritterCollection: {fileID: 1997572502}
-  StartingCritters: 1
+  StartingCritters: 4
   MaxChanges: 10
   ChangeDistance: 0.2
   TimeSlider: {fileID: 309209602}
+  maxFood: 800
 --- !u!4 &2144896089
 Transform:
   m_ObjectHideFlags: 0

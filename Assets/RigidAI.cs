@@ -67,8 +67,12 @@ public class RigidAI : MonoBehaviour
         MouthColider.OverlapCollider(filter,Collisions);
         foreach (Collider2D item in Collisions)
         {
-            Sts.energy+=item.transform.gameObject.GetComponent<Food>().energy;
-            Destroy(item.gameObject);
+            if(item.transform.gameObject.layer==LayerMask.NameToLayer("food"))
+            {
+                Sts.energy+=item.transform.gameObject.GetComponent<Food>().energy;
+                Destroy(item.gameObject);
+            }
+            
         }
 
         

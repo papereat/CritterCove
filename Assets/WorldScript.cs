@@ -24,6 +24,8 @@ public class WorldScript : MonoBehaviour
     float foodScale;
 
     public Slider TimeSlider;
+
+    public int maxFood;
     // Start is called before the first frame update
     void Start()
     {
@@ -67,13 +69,23 @@ public class WorldScript : MonoBehaviour
     {
         while(true)
         {
-            var x=0;
-            while(x<FoodCreatedPerWave)
+            
+            if(FoodCollection.transform.childCount>=maxFood)
             {
-                spawnFood();
-                x+=1;
+                
+                yield return new WaitForSeconds(spawnTime);
             }
-            yield return new WaitForSeconds(spawnTime);
+            else
+            {
+                var x=0;
+                while(x<FoodCreatedPerWave)
+                {
+                    spawnFood();
+                    x+=1;
+                }
+                yield return new WaitForSeconds(spawnTime);
+            }
+            
 
         }
     }
