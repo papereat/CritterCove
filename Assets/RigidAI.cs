@@ -16,7 +16,7 @@ public class RigidAI : MonoBehaviour
         
     }
     
-    void Update()
+    void FixedUpdate()
     {
         
         var Movemnt=0f;
@@ -53,11 +53,11 @@ public class RigidAI : MonoBehaviour
         }
         if(Sts.energy>0)
         {
-            Sts.energy-=(Movemnt*Sts.Speed/5+Rotation*Sts.RotationSpeed/90+Sts.ViewAngle/360*Sts.ViewDistnace)*Time.deltaTime;
+            Sts.energy-=(Mathf.Abs(Movemnt*Sts.Speed/5)+Mathf.Abs(Rotation*Sts.RotationSpeed/90)+Mathf.Abs(Sts.ViewAngle/360*Sts.ViewDistnace))*Time.deltaTime;
         }
         else
         {
-            Sts.health-=(Movemnt*Sts.Speed/5+Rotation*Sts.RotationSpeed/90+Sts.ViewAngle/360*Sts.ViewDistnace)*Time.deltaTime*10;
+            Sts.health-=(Mathf.Abs(Movemnt*Sts.Speed/5)+Mathf.Abs(Rotation*Sts.RotationSpeed/90)+Mathf.Abs(Sts.ViewAngle/360*Sts.ViewDistnace))*Time.deltaTime;
         }
         if(Sts.health<=0)
         {
@@ -67,7 +67,6 @@ public class RigidAI : MonoBehaviour
         MouthColider.OverlapCollider(filter,Collisions);
         foreach (Collider2D item in Collisions)
         {
-            Debug.Log("test");
             Sts.energy+=item.transform.gameObject.GetComponent<Food>().energy;
             Destroy(item.gameObject);
         }

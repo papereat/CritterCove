@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class WorldScript : MonoBehaviour
 {
@@ -15,6 +17,8 @@ public class WorldScript : MonoBehaviour
     public int MaxChanges;
     public float ChangeDistance;
     float foodScale;
+
+    public Slider TimeSlider;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +33,10 @@ public class WorldScript : MonoBehaviour
         a.transform.position=new Vector2(Random.Range(0,screenSize.x),Random.Range(0,screenSize.y));
         a.transform.localScale= new Vector3(foodScale,foodScale,0);
         a.GetComponent<Food>().energy=foodScale/foodDensity;
+    }
+    void FixedUpdate()
+    {
+        Time.timeScale=TimeSlider.value;
     }
 
     IEnumerator FoodSpawns()

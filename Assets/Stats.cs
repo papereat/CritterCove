@@ -12,6 +12,7 @@ public class Stats : MonoBehaviour
     public float ViewAngle;
     public float energy;
     public float health;
+    public int generation;
 
     void Awake()
     {
@@ -26,6 +27,7 @@ public class Stats : MonoBehaviour
         a.GetComponent<Stats>().energy=5;
         a.GetComponent<Stats>().health=100;
         a.GetComponent<Stats>().WS=WS;
+        a.GetComponent<Stats>().generation=generation+1;
 
         int y=Random.Range(1,WS.MaxChanges+1);
         int x=0;
