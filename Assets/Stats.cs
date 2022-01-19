@@ -13,6 +13,7 @@ public class Stats : MonoBehaviour
     public float energy;
     public float health;
     public int generation;
+    public GameObject CritterCollection;
 
     void Awake()
     {
@@ -28,6 +29,7 @@ public class Stats : MonoBehaviour
         a.GetComponent<Stats>().health=100;
         a.GetComponent<Stats>().WS=WS;
         a.GetComponent<Stats>().generation=generation+1;
+        a.transform.parent=CritterCollection.transform;
 
         int y=Random.Range(1,WS.MaxChanges+1);
         int x=0;

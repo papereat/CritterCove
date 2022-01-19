@@ -6,6 +6,8 @@ public class Controler : MonoBehaviour
 {
     public float speed;
     public Rigidbody2D rb;
+    public Camera C;
+    public float CameraSize;
 
 
     // Update is called once per frame
@@ -29,5 +31,13 @@ public class Controler : MonoBehaviour
             Movemnt.x-=speed;
         }
         rb.velocity=Movemnt;
+
+        CameraSize+=Input.mouseScrollDelta.y;
+
+        if(CameraSize<3)
+        {
+            CameraSize=3;
+        }
+        C.orthographicSize=CameraSize;
     }
 }
