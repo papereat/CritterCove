@@ -23,7 +23,7 @@ public class Stats : MonoBehaviour
         GameObject a =Instantiate(gameObject) as GameObject;
         a.transform.position=transform.position;
         a.name="Critter";
-        a.GetComponent<Stats>().energy=2;
+        a.GetComponent<Stats>().energy=5;
         a.GetComponent<Stats>().health=100;
         a.GetComponent<Stats>().WS=WS;
 
@@ -51,6 +51,15 @@ public class Stats : MonoBehaviour
             }
 
         }
+    }
+    public void Death()
+    {
+        GameObject a=Instantiate(Resources.Load("food") as GameObject);
+        a.transform.position=transform.position;
+        a.GetComponent<Food>().energy=3;
+        a.transform.localScale=new Vector3(WS.MeatSize,WS.MeatSize,0);
+        a.GetComponent<SpriteRenderer>().color=Color.red;
+        Destroy(this.gameObject);
     }
 
 }

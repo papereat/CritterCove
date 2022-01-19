@@ -10,6 +10,7 @@ public class WorldScript : MonoBehaviour
     public Vector2 foodEnergy;
     public float foodDensity;
     public int FoodCreatedPerWave;
+    public float MeatSize;
 
     public int MaxChanges;
     public float ChangeDistance;
@@ -28,7 +29,6 @@ public class WorldScript : MonoBehaviour
         a.transform.position=new Vector2(Random.Range(0,screenSize.x),Random.Range(0,screenSize.y));
         a.transform.localScale= new Vector3(foodScale,foodScale,0);
         a.GetComponent<Food>().energy=foodScale/foodDensity;
-        Debug.Log("Food Spawned");
     }
 
     IEnumerator FoodSpawns()

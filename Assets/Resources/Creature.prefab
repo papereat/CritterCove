@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 411588980}
   - component: {fileID: 8633621625076175813}
   - component: {fileID: -1612799307114811123}
-  - component: {fileID: 9079154403733115576}
+  - component: {fileID: 7917807572938330892}
   m_Layer: 0
   m_Name: Creature
   m_TagString: Untagged
@@ -174,6 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FOV: {fileID: 8633621625076175815}
+  WS: {fileID: 0}
   Speed: 1
   RotationSpeed: 90
   ViewDistnace: 1
@@ -194,8 +195,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FOV: {fileID: 8633621625076175815}
   rb: {fileID: -1612799307114811123}
-  MouthColider: {fileID: 9079154403733115576}
+  MouthColider: {fileID: 3616731136877465818}
   Sts: {fileID: 2959889540464463214}
+  filter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
 --- !u!212 &8633621625076175813
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -268,8 +283,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &9079154403733115576
-CircleCollider2D:
+--- !u!70 &7917807572938330892
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -281,6 +296,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Offset: {x: -0.06, y: 0}
+  m_Size: {x: 0.85, y: 0.79}
+  m_Direction: 1
