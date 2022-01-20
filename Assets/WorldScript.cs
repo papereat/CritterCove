@@ -88,6 +88,10 @@ public class WorldScript : MonoBehaviour
         a.GetComponent<Stats>().WS=this;
         a.GetComponent<Stats>().generation=0;
         a.GetComponent<Stats>().CritterCollection= CritterCollection;
+        a.GetComponent<Stats>().Speed=Random.Range(0.2f,3f);
+        a.GetComponent<Stats>().RotationSpeed=Random.Range(45,135);
+        a.GetComponent<Stats>().ViewAngle=Random.Range(30,180);
+        a.GetComponent<Stats>().ViewDistnace=Random.Range(0.2f,2f);
         a.transform.parent=CritterCollection.transform;
     }
     
