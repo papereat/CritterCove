@@ -24,6 +24,9 @@ public class WorldScript : MonoBehaviour
     float foodScale;
 
     public Slider TimeSlider;
+    public GameObject ExtinctionPannel;
+
+    public bool AutoRestart;
 
     public int maxFood;
     // Start is called before the first frame update
@@ -34,6 +37,22 @@ public class WorldScript : MonoBehaviour
     }
     void Update()
     {
+        if(CritterCollection.transform.childCount<=0)
+        {
+            if(AutoRestart)
+            {
+                RestartWorld();
+            }
+            else
+            {
+                ExtinctionPannel.SetActive(true);
+            }
+            
+        }
+        else 
+        {
+            ExtinctionPannel.SetActive(false);
+        }
         
         if(Input.GetKeyDown(KeyCode.R))
         {
@@ -42,7 +61,7 @@ public class WorldScript : MonoBehaviour
         }
         Time.timeScale=TimeSlider.value;
     }
-    void RestartWorld()
+    public void RestartWorld()
     {
         EndWorld();
         StartWorld();
@@ -92,6 +111,7 @@ public class WorldScript : MonoBehaviour
         a.GetComponent<Stats>().RotationSpeed=Random.Range(45,135);
         a.GetComponent<Stats>().ViewAngle=Random.Range(30,180);
         a.GetComponent<Stats>().ViewDistnace=Random.Range(0.2f,2f);
+        a.transform.rotation=new Quaternion(0,0,Random.Range(0f,360f),a.transform.rotation.w);
         a.transform.parent=CritterCollection.transform;
     }
     

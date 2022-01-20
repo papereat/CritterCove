@@ -9,6 +9,7 @@ public class RigidAI : MonoBehaviour
     public Collider2D MouthColider;
     public Stats Sts;
     public ContactFilter2D filter;
+    public float Hunger=100;
 
     // Update is called once per frame
     void Start()
@@ -18,7 +19,7 @@ public class RigidAI : MonoBehaviour
     
     void FixedUpdate()
     {
-        
+        Hunger=20/Sts.energy;
         var Movemnt=0f;
         var Rotation=0f;
         if(FOV.visiblePlayer.Count==0)
@@ -45,7 +46,7 @@ public class RigidAI : MonoBehaviour
 
         
 
-        if(Sts.energy>=6f)
+        if(Sts.energy>=8f && Random.Range(0f,1f)>=.97f)
         {
             Sts.energy-=5;
             Sts.Reproduce();
@@ -71,6 +72,13 @@ public class RigidAI : MonoBehaviour
             {
                 Sts.energy+=item.transform.gameObject.GetComponent<Food>().energy;
                 Destroy(item.gameObject);
+            }
+            else if(item.transform.gameObject.layer==LayerMask.NameToLayer("critter"))
+            {
+                if(Hunger<=50)
+                {
+                    item.gameObject.GetComponent<Stats>().Damage(this.gameObject);
+                }
             }
             
         }

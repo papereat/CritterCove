@@ -65,5 +65,13 @@ public class Stats : MonoBehaviour
         a.GetComponent<SpriteRenderer>().color=Color.red;
         Destroy(this.gameObject);
     }
+    public void Damage(GameObject Attacker)
+    {
+        if(Attacker.GetComponent<Stats>().health!=health)
+        {
+            health-=1;
+        }
+        
+    }
 
 }
