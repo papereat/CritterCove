@@ -29,7 +29,38 @@ public class WorldScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartWorld();
         
+    }
+    void Update()
+    {
+        
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("test");
+            RestartWorld();
+        }
+        Time.timeScale=TimeSlider.value;
+    }
+    void RestartWorld()
+    {
+        EndWorld();
+        StartWorld();
+    }
+    void EndWorld()
+    {
+        foreach (Transform child in FoodCollection.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach(Transform child in CritterCollection.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        StopAllCoroutines();
+    }
+    void StartWorld()
+    {
         StartCoroutine(FoodSpawns());
         var x=0;
         while (x<StartingCritters)
@@ -38,7 +69,6 @@ public class WorldScript : MonoBehaviour
             x+=1;
         }
     }
-
     void spawnFood()
     {
         foodScale=Random.Range(foodEnergy.x,foodEnergy.y)*foodDensity;
@@ -60,10 +90,7 @@ public class WorldScript : MonoBehaviour
         a.GetComponent<Stats>().CritterCollection= CritterCollection;
         a.transform.parent=CritterCollection.transform;
     }
-    void FixedUpdate()
-    {
-        Time.timeScale=TimeSlider.value;
-    }
+    
 
     IEnumerator FoodSpawns()
     {
