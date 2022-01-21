@@ -19,6 +19,12 @@ public class RigidAI : MonoBehaviour
     
     void FixedUpdate()
     {
+        if(Sts.IsEgg)
+        {
+            Sts.health=Sts.IncubationTime/5*Sts.size*100;
+            Sts.energy=2f;
+            return;
+        }
         Hunger=20/Sts.energy;
         var Movemnt=0f;
         var Rotation=0f;

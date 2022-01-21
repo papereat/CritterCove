@@ -6,6 +6,7 @@ public class Stats : MonoBehaviour
 {
     public FieldOfView FOV;
     public WorldScript WS;
+    public SpriteRenderer SR;
     public float Speed;
     public float RotationSpeed;
     public float ViewDistnace;
@@ -15,12 +16,36 @@ public class Stats : MonoBehaviour
     public float size;
     public int generation;
     public GameObject CritterCollection;
-
+    public bool IsEgg;
+    public float IncubationTime;
+    public Sprite EggSprite;
+    public Sprite CritterSprite;
+    
     void Awake()
     {
         FOV.viewRad=ViewDistnace;
         FOV.viewAngle=ViewAngle;
         transform.localScale=new Vector3(size,size,0);
+        StartCoroutine(Egg());
+    }
+    public IEnumerator Egg()
+    {
+        while(true)
+        {
+            if(IsEgg==false)
+            {
+                IsEgg=true;
+                SR.sprite=EggSprite;
+                yield return new WaitForSeconds(IncubationTime);
+            }
+            else
+            {
+                IsEgg=false;
+                SR.sprite=CritterSprite;
+                yield break;
+            }
+        }
+        
     }
     public void Reproduce()
     {
@@ -35,10 +60,11 @@ public class Stats : MonoBehaviour
 
         int y=Random.Range(1,WS.MaxChanges+1);
         int x=0;
+        
         while (x<y)
         {
             x+=1;
-            int z=Random.Range(1,6);
+            int z=Random.Range(1,7);
             var k=Random.Range(-WS.ChangeDistance,WS.ChangeDistance);
             switch (z)
             {
@@ -57,9 +83,13 @@ public class Stats : MonoBehaviour
                 case 5:
                     a.GetComponent<Stats>().size+=k;
                     break;
+                case 7:
+                    a.GetComponent<Stats>().IncubationTime+=k*2;
+                    break;
             }
 
         }
+        
     }
     public void Death()
     {
@@ -74,7 +104,15 @@ public class Stats : MonoBehaviour
     {
         if(Attacker.GetComponent<Stats>().health!=health)
         {
-            health-=1;
+            if(IsEgg)
+            {
+                health-=-0.4f;
+            }
+            else
+            {
+                health-=1;
+            }
+            
         }
         
     }

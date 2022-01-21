@@ -34,7 +34,7 @@ public class WorldScript : MonoBehaviour
 
     public GameObject StartingPannel;
     public Toggle SetStatsToggle;
-    public Slider[] startingSliders=new Slider[4];
+    public Slider[] startingSliders=new Slider[5];
 
 
     // Start is called before the first frame update
@@ -94,7 +94,7 @@ public class WorldScript : MonoBehaviour
         var x=0;
         while (x<StartingCritters)
         {
-            spawnCritter(SetBegginingStats,startingSliders[0].value,startingSliders[1].value,startingSliders[2].value,startingSliders[3].value);
+            spawnCritter(SetBegginingStats,startingSliders[0].value,startingSliders[1].value,startingSliders[2].value,startingSliders[3].value,startingSliders[4].value);
             x+=1;
         }
     }
@@ -107,7 +107,7 @@ public class WorldScript : MonoBehaviour
         a.GetComponent<Food>().energy=foodScale/foodDensity;
         a.transform.parent=FoodCollection.transform;
     }
-    void spawnCritter(bool ShouldSet,float SpeedSet,float RotationSpeedSet,float ViewAngleSet,float ViewDistnaceSet)
+    void spawnCritter(bool ShouldSet,float SpeedSet,float RotationSpeedSet,float ViewAngleSet,float ViewDistnaceSet,float SizeSet)
     {
         GameObject a =Instantiate(CritterPrefab) as GameObject;
         a.transform.position=new Vector3(Random.Range(0,screenSize.x),Random.Range(0,screenSize.y));
@@ -123,6 +123,7 @@ public class WorldScript : MonoBehaviour
             a.GetComponent<Stats>().RotationSpeed=RotationSpeedSet;
             a.GetComponent<Stats>().ViewAngle=ViewAngleSet;
             a.GetComponent<Stats>().ViewDistnace=ViewDistnaceSet;
+            a.GetComponent<Stats>().size=SizeSet;
         }
         else   
         {
@@ -130,6 +131,8 @@ public class WorldScript : MonoBehaviour
             a.GetComponent<Stats>().RotationSpeed=Random.Range(45,135);
             a.GetComponent<Stats>().ViewAngle=Random.Range(30,180);
             a.GetComponent<Stats>().ViewDistnace=Random.Range(0.2f,2f);
+            a.GetComponent<Stats>().size=Random.Range(0.2f,3f);
+            a.GetComponent<Stats>().IncubationTime=Random.Range(1,20f);
         }
         a.transform.rotation=new Quaternion(0,0,Random.Range(0f,360f),a.transform.rotation.w);
         a.transform.parent=CritterCollection.transform;
