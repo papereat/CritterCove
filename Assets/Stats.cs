@@ -12,6 +12,7 @@ public class Stats : MonoBehaviour
     public float ViewAngle;
     public float energy;
     public float health;
+    public float size;
     public int generation;
     public GameObject CritterCollection;
 
@@ -19,6 +20,7 @@ public class Stats : MonoBehaviour
     {
         FOV.viewRad=ViewDistnace;
         FOV.viewAngle=ViewAngle;
+        transform.localScale=new Vector3(size,size,0);
     }
     public void Reproduce()
     {
@@ -36,7 +38,7 @@ public class Stats : MonoBehaviour
         while (x<y)
         {
             x+=1;
-            int z=Random.Range(1,5);
+            int z=Random.Range(1,6);
             var k=Random.Range(-WS.ChangeDistance,WS.ChangeDistance);
             switch (z)
             {
@@ -51,6 +53,9 @@ public class Stats : MonoBehaviour
                     break;
                 case 4:
                     a.GetComponent<Stats>().ViewAngle+=k*3;
+                    break;
+                case 5:
+                    a.GetComponent<Stats>().size+=k;
                     break;
             }
 

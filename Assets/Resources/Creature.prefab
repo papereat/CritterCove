@@ -181,6 +181,7 @@ MonoBehaviour:
   ViewAngle: 45
   energy: 2
   health: 100
+  size: 1
   generation: 0
   CritterCollection: {fileID: 0}
 --- !u!114 &411588980
