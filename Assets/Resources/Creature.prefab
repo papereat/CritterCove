@@ -39,7 +39,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029824224415114396}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -188,8 +188,8 @@ MonoBehaviour:
   CritterCollection: {fileID: 0}
   IsEgg: 0
   IncubationTime: 5
-  EggSprite: {fileID: 21300000, guid: 1ff8458a3ee120b44a96a5b8eceb937c, type: 3}
-  CritterSprite: {fileID: 21300000, guid: d9a180c9704566149a35dc0f89a2be72, type: 3}
+  EggSprite: {fileID: 21300000, guid: 1c1775033301ce044ab082d9d84cbbbe, type: 3}
+  CritterSprite: {fileID: 21300000, guid: 066b291b12c207e4f85ea8e11aaa1917, type: 3}
 --- !u!114 &411588980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,7 +261,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d9a180c9704566149a35dc0f89a2be72, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 066b291b12c207e4f85ea8e11aaa1917, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
