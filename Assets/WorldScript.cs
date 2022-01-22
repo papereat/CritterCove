@@ -24,16 +24,45 @@ public class WorldScript : MonoBehaviour
     float foodScale;
 
     public Slider TimeSlider;
+    public GameObject ExtinctionPannel;
+
+    public bool AutoRestart;
 
     public int maxFood;
+
+    public bool SetBegginingStats;
+
+    public GameObject StartingPannel;
+    public Toggle SetStatsToggle;
+    public Slider[] startingSliders=new Slider[5];
+
+
     // Start is called before the first frame update
     void Start()
     {
+
         StartWorld();
         
     }
     void Update()
     {
+        SetBegginingStats=SetStatsToggle.isOn;
+        if(CritterCollection.transform.childCount<=0)
+        {
+            if(AutoRestart)
+            {
+                RestartWorld();
+            }
+            else
+            {
+                ExtinctionPannel.SetActive(true);
+            }
+            
+        }
+        else 
+        {
+            ExtinctionPannel.SetActive(false);
+        }
         
         if(Input.GetKeyDown(KeyCode.R))
         {
@@ -42,7 +71,7 @@ public class WorldScript : MonoBehaviour
         }
         Time.timeScale=TimeSlider.value;
     }
-    void RestartWorld()
+    public void RestartWorld()
     {
         EndWorld();
         StartWorld();
@@ -65,7 +94,7 @@ public class WorldScript : MonoBehaviour
         var x=0;
         while (x<StartingCritters)
         {
-            spawnCritter();
+            spawnCritter(SetBegginingStats,startingSliders[0].value,startingSliders[1].value,startingSliders[2].value,startingSliders[3].value,startingSliders[4].value);
             x+=1;
         }
     }
@@ -78,9 +107,9 @@ public class WorldScript : MonoBehaviour
         a.GetComponent<Food>().energy=foodScale/foodDensity;
         a.transform.parent=FoodCollection.transform;
     }
-    void spawnCritter()
+    void spawnCritter(bool ShouldSet,float SpeedSet,float RotationSpeedSet,float ViewAngleSet,float ViewDistnaceSet,float SizeSet)
     {
-         GameObject a =Instantiate(CritterPrefab) as GameObject;
+        GameObject a =Instantiate(CritterPrefab) as GameObject;
         a.transform.position=new Vector3(Random.Range(0,screenSize.x),Random.Range(0,screenSize.y));
         a.name="Critter";
         a.GetComponent<Stats>().energy=5;
@@ -88,10 +117,24 @@ public class WorldScript : MonoBehaviour
         a.GetComponent<Stats>().WS=this;
         a.GetComponent<Stats>().generation=0;
         a.GetComponent<Stats>().CritterCollection= CritterCollection;
-        a.GetComponent<Stats>().Speed=Random.Range(0.2f,3f);
-        a.GetComponent<Stats>().RotationSpeed=Random.Range(45,135);
-        a.GetComponent<Stats>().ViewAngle=Random.Range(30,180);
-        a.GetComponent<Stats>().ViewDistnace=Random.Range(0.2f,2f);
+        if(ShouldSet)
+        {
+            a.GetComponent<Stats>().Speed=SpeedSet;
+            a.GetComponent<Stats>().RotationSpeed=RotationSpeedSet;
+            a.GetComponent<Stats>().ViewAngle=ViewAngleSet;
+            a.GetComponent<Stats>().ViewDistnace=ViewDistnaceSet;
+            a.GetComponent<Stats>().size=SizeSet;
+        }
+        else   
+        {
+            a.GetComponent<Stats>().Speed=Random.Range(0.2f,3f);
+            a.GetComponent<Stats>().RotationSpeed=Random.Range(45,135);
+            a.GetComponent<Stats>().ViewAngle=Random.Range(30,180);
+            a.GetComponent<Stats>().ViewDistnace=Random.Range(0.2f,2f);
+            a.GetComponent<Stats>().size=Random.Range(0.2f,3f);
+            a.GetComponent<Stats>().IncubationTime=Random.Range(1,20f);
+        }
+        a.transform.rotation=new Quaternion(0,0,Random.Range(0f,360f),a.transform.rotation.w);
         a.transform.parent=CritterCollection.transform;
     }
     
