@@ -10,6 +10,7 @@ public class Controler : MonoBehaviour
     public float CameraSize;
 
 
+
     // Update is called once per frame
     void Update()
     {
@@ -30,9 +31,9 @@ public class Controler : MonoBehaviour
         {
             Movemnt.x-=speed;
         }
-        rb.velocity=Movemnt;
+        rb.velocity=Movemnt/Time.timeScale*CameraSize;
 
-        CameraSize+=Input.mouseScrollDelta.y;
+        CameraSize+=Input.mouseScrollDelta.y*3;
 
         if(CameraSize<3)
         {

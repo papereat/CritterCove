@@ -46,7 +46,11 @@ public class WorldScript : MonoBehaviour
     }
     void Update()
     {
-        SetBegginingStats=SetStatsToggle.isOn;
+        if(SetStatsToggle!=null)
+        {
+            SetBegginingStats=SetStatsToggle.isOn;
+        }
+        
         if(CritterCollection.transform.childCount<=0)
         {
             if(AutoRestart)
@@ -69,7 +73,15 @@ public class WorldScript : MonoBehaviour
             Debug.Log("test");
             RestartWorld();
         }
-        Time.timeScale=TimeSlider.value;
+        if(TimeSlider!=null)
+        {
+            Time.timeScale=TimeSlider.value;
+        }
+        else
+        {
+            Time.timeScale=10f;
+        }
+        
     }
     public void RestartWorld()
     {
