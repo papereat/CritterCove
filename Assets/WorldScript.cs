@@ -133,6 +133,9 @@ public class WorldScript : MonoBehaviour
             a.GetComponent<Stats>().ViewDistnace=Random.Range(0.2f,2f);
             a.GetComponent<Stats>().size=Random.Range(0.2f,3f);
             a.GetComponent<Stats>().IncubationTime=Random.Range(1,20f);
+            a.GetComponent<Stats>().color.x=Random.Range(0f,1f);
+            a.GetComponent<Stats>().color.y=Random.Range(0f,1f);
+            a.GetComponent<Stats>().color.z=Random.Range(0f,1f);
         }
         a.transform.rotation=new Quaternion(0,0,Random.Range(0f,360f),a.transform.rotation.w);
         a.transform.parent=CritterCollection.transform;

@@ -190,6 +190,7 @@ MonoBehaviour:
   IncubationTime: 5
   EggSprite: {fileID: 21300000, guid: 1c1775033301ce044ab082d9d84cbbbe, type: 3}
   CritterSprite: {fileID: 21300000, guid: 066b291b12c207e4f85ea8e11aaa1917, type: 3}
+  color: {x: 0.7, y: 0.7, z: 0.7}
 --- !u!114 &411588980
 MonoBehaviour:
   m_ObjectHideFlags: 0

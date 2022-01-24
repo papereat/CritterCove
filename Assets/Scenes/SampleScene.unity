@@ -4644,10 +4644,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodPrefab: {fileID: 1944093402611490237, guid: 7e149e0c7e3172145aa24333e6315be8, type: 3}
   spawnTime: 6
-  screenSize: {x: 50, y: 50}
+  screenSize: {x: 200, y: 200}
   foodEnergy: {x: 1, y: 10}
   foodDensity: 0.18
-  FoodCreatedPerWave: 3
+  FoodCreatedPerWave: 18
   MeatSize: 1
   FoodCollection: {fileID: 1256074137}
   CritterPrefab: {fileID: 8633621625076175812, guid: 4d0e2c74614e5b241b861db374000eb5, type: 3}
