@@ -21,7 +21,7 @@ public class RigidAI : MonoBehaviour
     {
         if(Sts.IsEgg)
         {
-            Sts.health=Sts.IncubationTime/5*Sts.size*100;
+            Sts.health=Sts.IncubationTime/5*Sts.size*50+100;
             Sts.energy=2f;
             return;
         }

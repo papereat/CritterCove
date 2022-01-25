@@ -31,7 +31,15 @@ public class Controler : MonoBehaviour
         {
             Movemnt.x-=speed;
         }
-        rb.velocity=Movemnt/Time.timeScale*CameraSize;
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            rb.velocity=Movemnt/Time.timeScale*CameraSize/3;
+        }
+        else
+        {
+            rb.velocity=Movemnt/Time.timeScale*CameraSize;
+        }
+        
 
         CameraSize+=Input.mouseScrollDelta.y*3;
 
