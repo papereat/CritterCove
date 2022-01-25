@@ -20,12 +20,14 @@ public class Stats : MonoBehaviour
     public float IncubationTime;
     public Sprite EggSprite;
     public Sprite CritterSprite;
+    public Vector3 color;
     
     void Awake()
     {
         FOV.viewRad=ViewDistnace;
         FOV.viewAngle=ViewAngle;
         transform.localScale=new Vector3(size,size,0);
+        SR.color= new Color(color.x,color.y,color.z,1);
         StartCoroutine(Egg());
     }
     public IEnumerator Egg()
@@ -64,7 +66,7 @@ public class Stats : MonoBehaviour
         while (x<y)
         {
             x+=1;
-            int z=Random.Range(1,7);
+            int z=Random.Range(1,10);
             var k=Random.Range(-WS.ChangeDistance,WS.ChangeDistance);
             switch (z)
             {
@@ -85,6 +87,39 @@ public class Stats : MonoBehaviour
                     break;
                 case 7:
                     a.GetComponent<Stats>().IncubationTime+=k*2;
+                    break;
+                case 8:
+                    a.GetComponent<Stats>().color.x+=k;
+                    if(a.GetComponent<Stats>().color.x>1)
+                    {
+                        a.GetComponent<Stats>().color.x=1;
+                    }
+                    else if(a.GetComponent<Stats>().color.x<0)
+                    {
+                        a.GetComponent<Stats>().color.x=0;
+                    }
+                    break;
+                case 9:
+                    a.GetComponent<Stats>().color.y+=k;
+                    if(a.GetComponent<Stats>().color.y>1)
+                    {
+                        a.GetComponent<Stats>().color.y=1;
+                    }
+                    else if(a.GetComponent<Stats>().color.y<0)
+                    {
+                        a.GetComponent<Stats>().color.y=0;
+                    }
+                    break;
+                case 10:
+                    a.GetComponent<Stats>().color.z+=k;
+                    if(a.GetComponent<Stats>().color.z>1)
+                    {
+                        a.GetComponent<Stats>().color.z=1;
+                    }
+                    else if(a.GetComponent<Stats>().color.z<0)
+                    {
+                        a.GetComponent<Stats>().color.z=0;
+                    }
                     break;
             }
 

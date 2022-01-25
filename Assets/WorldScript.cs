@@ -46,7 +46,11 @@ public class WorldScript : MonoBehaviour
     }
     void Update()
     {
-        SetBegginingStats=SetStatsToggle.isOn;
+        if(SetStatsToggle!=null)
+        {
+            SetBegginingStats=SetStatsToggle.isOn;
+        }
+        
         if(CritterCollection.transform.childCount<=0)
         {
             if(AutoRestart)
@@ -69,7 +73,15 @@ public class WorldScript : MonoBehaviour
             Debug.Log("test");
             RestartWorld();
         }
-        Time.timeScale=TimeSlider.value;
+        if(TimeSlider!=null)
+        {
+            Time.timeScale=TimeSlider.value;
+        }
+        else
+        {
+            Time.timeScale=10f;
+        }
+        
     }
     public void RestartWorld()
     {
@@ -133,6 +145,9 @@ public class WorldScript : MonoBehaviour
             a.GetComponent<Stats>().ViewDistnace=Random.Range(0.2f,2f);
             a.GetComponent<Stats>().size=Random.Range(0.2f,3f);
             a.GetComponent<Stats>().IncubationTime=Random.Range(1,20f);
+            a.GetComponent<Stats>().color.x=Random.Range(0f,1f);
+            a.GetComponent<Stats>().color.y=Random.Range(0f,1f);
+            a.GetComponent<Stats>().color.z=Random.Range(0f,1f);
         }
         a.transform.rotation=new Quaternion(0,0,Random.Range(0f,360f),a.transform.rotation.w);
         a.transform.parent=CritterCollection.transform;
