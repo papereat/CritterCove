@@ -36,6 +36,7 @@ public class WorldScript : MonoBehaviour
     public Toggle SetStatsToggle;
     public Slider[] startingSliders=new Slider[5];
 
+    public Text[] ColorSelector=new Text[3];
 
     // Start is called before the first frame update
     void Start()
@@ -87,6 +88,7 @@ public class WorldScript : MonoBehaviour
     {
         EndWorld();
         StartWorld();
+        
     }
     void EndWorld()
     {
@@ -106,7 +108,7 @@ public class WorldScript : MonoBehaviour
         var x=0;
         while (x<StartingCritters)
         {
-            spawnCritter(SetBegginingStats,startingSliders[0].value,startingSliders[1].value,startingSliders[2].value,startingSliders[3].value,startingSliders[4].value);
+            spawnCritter(SetBegginingStats,startingSliders[0].value,startingSliders[1].value,startingSliders[2].value,startingSliders[3].value,startingSliders[4].value,startingSliders[5].value,new Vector3(float.Parse(ColorSelector[0].text),float.Parse(ColorSelector[1].text),float.Parse(ColorSelector[2].text)));
             x+=1;
         }
     }
@@ -119,7 +121,7 @@ public class WorldScript : MonoBehaviour
         a.GetComponent<Food>().energy=foodScale/foodDensity;
         a.transform.parent=FoodCollection.transform;
     }
-    void spawnCritter(bool ShouldSet,float SpeedSet,float RotationSpeedSet,float ViewAngleSet,float ViewDistnaceSet,float SizeSet)
+    void spawnCritter(bool ShouldSet,float SpeedSet,float RotationSpeedSet,float ViewAngleSet,float ViewDistnaceSet,float SizeSet,float IncubationTimeSet,Vector3 ColorSet)
     {
         GameObject a =Instantiate(CritterPrefab) as GameObject;
         a.transform.position=new Vector3(Random.Range(0,screenSize.x),Random.Range(0,screenSize.y));
@@ -137,6 +139,8 @@ public class WorldScript : MonoBehaviour
             a.GetComponent<Stats>().ViewAngle=ViewAngleSet;
             a.GetComponent<Stats>().ViewDistnace=ViewDistnaceSet;
             a.GetComponent<Stats>().size=SizeSet;
+            a.GetComponent<Stats>().IncubationTime=IncubationTimeSet;
+            a.GetComponent<Stats>().color= ColorSet/255;
         }
         else   
         {
