@@ -29,7 +29,7 @@ public class WorldInfo : MonoBehaviour
             WorldTime+=1*Time.deltaTime;
             CritterCount=WS.CritterCollection.transform.childCount;
             PlantCount=WS.FoodCollection.transform.childCount;
-            textBoxes.text="Time: "+WorldTime+"Critter Count: "+CritterCount+"\n Food Count: "+PlantCount;
+            textBoxes.text="Time: "+WorldTime+"\nCritter Count: "+CritterCount+"\nFood Count: "+PlantCount;
             yield return new WaitForSeconds(0.1f);
         }
         

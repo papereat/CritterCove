@@ -16,6 +16,7 @@ public class Stats : MonoBehaviour
     public float size;
     public int generation;
     public GameObject CritterCollection;
+    public GameObject FoodCollection;
     public bool IsEgg;
     public float IncubationTime;
     public Sprite EggSprite;
@@ -133,6 +134,7 @@ public class Stats : MonoBehaviour
         a.GetComponent<Food>().energy=3;
         a.transform.localScale=new Vector3(WS.MeatSize,WS.MeatSize,0);
         a.GetComponent<SpriteRenderer>().color=Color.red;
+        a.transform.parent=FoodCollection.transform;
         Destroy(this.gameObject);
     }
     public void Damage(GameObject Attacker)

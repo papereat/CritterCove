@@ -129,6 +129,7 @@ public class WorldScript : MonoBehaviour
         a.GetComponent<Stats>().WS=this;
         a.GetComponent<Stats>().generation=0;
         a.GetComponent<Stats>().CritterCollection= CritterCollection;
+        a.GetComponent<Stats>().FoodCollection=FoodCollection;
         if(ShouldSet)
         {
             a.GetComponent<Stats>().Speed=SpeedSet;
