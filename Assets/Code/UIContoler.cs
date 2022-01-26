@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIContoler : MonoBehaviour
 {
     public GameObject StatsPannel;
+    public bool GameStart;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +15,8 @@ public class UIContoler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+
+        if(Input.GetKeyDown(KeyCode.Tab)&&GameStart)
         {
             if(StatsPannel.activeSelf==true)
             {

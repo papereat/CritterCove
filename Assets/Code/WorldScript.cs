@@ -38,6 +38,8 @@ public class WorldScript : MonoBehaviour
 
     public Text[] ColorSelector=new Text[3];
 
+    public Text[] StartingStuff=new Text[3];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -102,8 +104,96 @@ public class WorldScript : MonoBehaviour
         }
         StopAllCoroutines();
     }
-    void StartWorld()
+    public void StartWorld()
     {
+        if(StartingStuff[0].text!=null)
+        {
+            spawnTime=float.Parse(StartingStuff[0].text);
+        }
+        else
+        {
+            spawnTime=5f;
+        }
+        if(StartingStuff[1].text!=null)
+        {
+            foodEnergy.x=float.Parse(StartingStuff[1].text);
+        }
+        else
+        {
+            foodEnergy.x=0.5f;
+        }
+        if(StartingStuff[2].text!=null)
+        {
+            foodEnergy.y=float.Parse(StartingStuff[2].text);
+        }
+        else
+        {
+            foodEnergy.y=0.5f;
+        }
+        if(StartingStuff[3].text!=null)
+        {
+            foodDensity=float.Parse(StartingStuff[3].text);
+        }
+        else
+        {
+            foodDensity=1f;
+        }
+        if(StartingStuff[4].text!=null)
+        {
+            maxFood=int.Parse(StartingStuff[4].text);
+        }
+        else
+        {
+            maxFood=500;
+        }
+        if(StartingStuff[5].text!=null)
+        {
+            StartingCritters=int.Parse(StartingStuff[5].text);
+        }
+        else
+        {
+            StartingCritters=4;
+        }
+        if(StartingStuff[6].text!=null)
+        {
+            MaxChanges=int.Parse(StartingStuff[6].text);
+        }
+        else
+        {
+            MaxChanges=4;
+        }
+        if(StartingStuff[7].text!=null)
+        {
+            ChangeDistance=float.Parse(StartingStuff[7].text);
+        }
+        else
+        {
+            ChangeDistance=.4f;
+        }
+        if(StartingStuff[8].text!=null)
+        {
+            screenSize.x=float.Parse(StartingStuff[8].text);
+        }
+        else
+        {
+            screenSize.x=.4f;
+        }
+        if (StartingStuff[9].text!=null)
+        {
+            screenSize.y=float.Parse(StartingStuff[9].text);
+        }
+        else
+        {
+            screenSize.y=.4f;
+        }
+        if (StartingStuff[10].text!=null)
+        {
+            MeatSize=float.Parse(StartingStuff[10].text);
+        }
+        else
+        {
+            MeatSize=.4f;
+        }
         StartCoroutine(FoodSpawns());
         var x=0;
         while (x<StartingCritters)
