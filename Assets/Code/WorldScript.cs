@@ -36,19 +36,24 @@ public class WorldScript : MonoBehaviour
     public Toggle SetStatsToggle;
     public Slider[] startingSliders=new Slider[5];
 
-    public Text[] ColorSelector=new Text[3];
+    public InputField[] ColorSelector=new InputField[3];
 
     public Text[] StartingStuff=new Text[3];
+    public GameObject StartGamePannel;
+    public bool WorldReady;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        StartWorld();
         
     }
     void Update()
     {
+        if(!WorldReady)
+        {
+            return;
+        }
         if(SetStatsToggle!=null)
         {
             SetBegginingStats=SetStatsToggle.isOn;
@@ -106,7 +111,7 @@ public class WorldScript : MonoBehaviour
     }
     public void StartWorld()
     {
-        if(StartingStuff[0].text!=null)
+        if(StartingStuff[0].text!="")
         {
             spawnTime=float.Parse(StartingStuff[0].text);
         }
@@ -114,7 +119,7 @@ public class WorldScript : MonoBehaviour
         {
             spawnTime=5f;
         }
-        if(StartingStuff[1].text!=null)
+        if(StartingStuff[1].text!="")
         {
             foodEnergy.x=float.Parse(StartingStuff[1].text);
         }
@@ -122,7 +127,7 @@ public class WorldScript : MonoBehaviour
         {
             foodEnergy.x=0.5f;
         }
-        if(StartingStuff[2].text!=null)
+        if(StartingStuff[2].text!="")
         {
             foodEnergy.y=float.Parse(StartingStuff[2].text);
         }
@@ -130,7 +135,7 @@ public class WorldScript : MonoBehaviour
         {
             foodEnergy.y=0.5f;
         }
-        if(StartingStuff[3].text!=null)
+        if(StartingStuff[3].text!="")
         {
             foodDensity=float.Parse(StartingStuff[3].text);
         }
@@ -138,7 +143,7 @@ public class WorldScript : MonoBehaviour
         {
             foodDensity=1f;
         }
-        if(StartingStuff[4].text!=null)
+        if(StartingStuff[4].text!="")
         {
             maxFood=int.Parse(StartingStuff[4].text);
         }
@@ -146,7 +151,7 @@ public class WorldScript : MonoBehaviour
         {
             maxFood=500;
         }
-        if(StartingStuff[5].text!=null)
+        if(StartingStuff[5].text!="")
         {
             StartingCritters=int.Parse(StartingStuff[5].text);
         }
@@ -154,7 +159,7 @@ public class WorldScript : MonoBehaviour
         {
             StartingCritters=4;
         }
-        if(StartingStuff[6].text!=null)
+        if(StartingStuff[6].text!="")
         {
             MaxChanges=int.Parse(StartingStuff[6].text);
         }
@@ -162,7 +167,7 @@ public class WorldScript : MonoBehaviour
         {
             MaxChanges=4;
         }
-        if(StartingStuff[7].text!=null)
+        if(StartingStuff[7].text!="")
         {
             ChangeDistance=float.Parse(StartingStuff[7].text);
         }
@@ -170,7 +175,7 @@ public class WorldScript : MonoBehaviour
         {
             ChangeDistance=.4f;
         }
-        if(StartingStuff[8].text!=null)
+        if(StartingStuff[8].text!="")
         {
             screenSize.x=float.Parse(StartingStuff[8].text);
         }
@@ -178,7 +183,7 @@ public class WorldScript : MonoBehaviour
         {
             screenSize.x=.4f;
         }
-        if (StartingStuff[9].text!=null)
+        if (StartingStuff[9].text!="")
         {
             screenSize.y=float.Parse(StartingStuff[9].text);
         }
@@ -186,18 +191,33 @@ public class WorldScript : MonoBehaviour
         {
             screenSize.y=.4f;
         }
-        if (StartingStuff[10].text!=null)
+        if (StartingStuff[10].text!="")
         {
-            MeatSize=float.Parse(StartingStuff[10].text);
+            //MeatSize=float.Parse(StartingStuff[10].text);
         }
         else
         {
             MeatSize=.4f;
         }
+        StartGamePannel.SetActive(false);
+        WorldReady=true;
         StartCoroutine(FoodSpawns());
         var x=0;
         while (x<StartingCritters)
         {
+            if(ColorSelector[0].text=="")
+            {
+                ColorSelector[0].text="255";
+            }
+            if(ColorSelector[1].text=="")
+            {
+                ColorSelector[1].text="255";
+            }
+            if(ColorSelector[2].text=="")
+            {
+                ColorSelector[2].text="255";
+            }
+            
             spawnCritter(SetBegginingStats,startingSliders[0].value,startingSliders[1].value,startingSliders[2].value,startingSliders[3].value,startingSliders[4].value,startingSliders[5].value,new Vector3(float.Parse(ColorSelector[0].text),float.Parse(ColorSelector[1].text),float.Parse(ColorSelector[2].text)));
             x+=1;
         }
