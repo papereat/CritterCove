@@ -22,6 +22,9 @@ public class Stats : MonoBehaviour
     public Sprite EggSprite;
     public Sprite CritterSprite;
     public Vector3 color;
+    public float MaxHealth;
+    public float SleepEfectivity;
+    public bool isSleep;
     
     void Awake()
     {
@@ -29,6 +32,8 @@ public class Stats : MonoBehaviour
         FOV.viewAngle=ViewAngle;
         transform.localScale=new Vector3(size,size,0);
         SR.color= new Color(color.x,color.y,color.z,1);
+        MaxHealth=50*size+50;
+        health=IncubationTime/5*MaxHealth;
         StartCoroutine(Egg());
     }
     public IEnumerator Egg()
@@ -39,6 +44,8 @@ public class Stats : MonoBehaviour
             {
                 IsEgg=true;
                 SR.sprite=EggSprite;
+                
+                
                 yield return new WaitForSeconds(IncubationTime);
             }
             else
@@ -50,13 +57,30 @@ public class Stats : MonoBehaviour
         }
         
     }
+    void FixedUpdate()
+    {
+        if(isSleep)
+        {
+            if(energy>0)
+            {
+                energy-=(Mathf.Abs(ViewAngle/360*ViewDistnace))*Time.deltaTime;
+                health+=2*SleepEfectivity*Time.deltaTime;
+
+            }
+            else
+            {
+                isSleep=false;
+            }
+            
+        }
+        
+    }
     public void Reproduce()
     {
         GameObject a =Instantiate(gameObject) as GameObject;
         a.transform.position=transform.position;
         a.name="Critter";
         a.GetComponent<Stats>().energy=5;
-        a.GetComponent<Stats>().health=100;
         a.GetComponent<Stats>().WS=WS;
         a.GetComponent<Stats>().generation=generation+1;
         a.transform.parent=CritterCollection.transform;

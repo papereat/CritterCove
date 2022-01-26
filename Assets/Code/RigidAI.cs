@@ -21,9 +21,16 @@ public class RigidAI : MonoBehaviour
     {
         if(Sts.IsEgg)
         {
-            Sts.health=Sts.IncubationTime/5*Sts.size*50+100;
             Sts.energy=2f;
             return;
+        }
+        if(Sts.isSleep)
+        {
+            return;
+        }
+        if(Sts.health<=20&&Sts.energy>=5)
+        {
+            Sts.isSleep=true;
         }
         Hunger=20/Sts.energy;
         var Movemnt=0f;
