@@ -7,7 +7,7 @@ public class WorldInfo : MonoBehaviour
 {
     public WorldScript WS;
     public GameObject InfoPannel;
-    float WorldTime;
+    public float WorldTime;
     int CritterCount;
     int PlantCount;
     public Text textBoxes;
@@ -20,13 +20,16 @@ public class WorldInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(WS.CritterCollection.transform.childCount==0)
+        {
+            WorldTime=0f;
+        }
     }
     IEnumerator CheckInfo()
     {
         while(true)
         {
-            WorldTime+=1*Time.deltaTime;
+            WorldTime+=0.1f;
             CritterCount=WS.CritterCollection.transform.childCount;
             PlantCount=WS.FoodCollection.transform.childCount;
             textBoxes.text="Time: "+WorldTime+"\nCritter Count: "+CritterCount+"\nFood Count: "+PlantCount;

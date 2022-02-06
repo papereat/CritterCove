@@ -3639,6 +3639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WS: {fileID: 2144896087}
   InfoPannel: {fileID: 653995473}
+  WorldTime: 0
   textBoxes: {fileID: 1669112972}
 --- !u!4 &723031831
 Transform:
@@ -8960,19 +8961,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: bc576d06d7a6a60458dee6dd4688d4f0, type: 3}
+    m_FontSize: 93
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 93
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Start World
 --- !u!222 &1697817386
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11413,6 +11414,7 @@ MonoBehaviour:
   FoodCreatedPerWave: 18
   MeatSize: 1
   FoodCollection: {fileID: 1256074137}
+  WI: {fileID: 723031830}
   CritterPrefab: {fileID: 8633621625076175812, guid: 4d0e2c74614e5b241b861db374000eb5, type: 3}
   CritterCollection: {fileID: 1997572502}
   StartingCritters: 6

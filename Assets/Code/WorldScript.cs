@@ -14,6 +14,7 @@ public class WorldScript : MonoBehaviour
     public int FoodCreatedPerWave;
     public float MeatSize;
     public GameObject FoodCollection;
+    public WorldInfo WI;
 
     public GameObject CritterPrefab;
     public GameObject CritterCollection;
@@ -111,6 +112,7 @@ public class WorldScript : MonoBehaviour
     }
     public void StartWorld()
     {
+        WI.WorldTime=0f;
         if(StartingStuff[0].text!="")
         {
             spawnTime=float.Parse(StartingStuff[0].text);
