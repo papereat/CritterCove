@@ -12,6 +12,7 @@ public class NNAI : MonoBehaviour
     public NueralNetwork NN;
     public int startingHiddenNodes;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +60,31 @@ public class NNAI : MonoBehaviour
     {
         //AI
 
+        //IputNodeSet
+        //Food I nview
+        NN.Nodes[0].Amount=1/(1+Mathf.Exp(-FOV.visiblePlayer.Count/2));
+        //energy
+        NN.Nodes[1].Amount=1/(1+Mathf.Exp(Sts.energy/2));
+        //health
+        NN.Nodes[2].Amount=1/(1+Mathf.Exp(Sts.health/5));
+
+        //output nodes
+        //Acceleration
+        NN.Nodes[3].Amount=NN.CheckValue(3);
+
+
+        if(Sts.IsEgg)
+        {
+            Sts.energy=2f;
+            return;
+        }
+        if(Sts.isSleep)
+        {
+            return;
+        }
+
+
+        
 
     }
 }

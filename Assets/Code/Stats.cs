@@ -26,6 +26,7 @@ public class Stats : MonoBehaviour
     public float SleepEfectivity;
     public bool isSleep;
     
+    
     void Awake()
     {
         FOV.viewRad=ViewDistnace;

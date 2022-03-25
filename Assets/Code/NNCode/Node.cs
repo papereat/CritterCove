@@ -11,6 +11,7 @@ public class Node
     public bool isInput;
     public float Amount;
     public string Name;
+    public float Hight;
 
     public void CreateConnection(Node node,float weight)
     {

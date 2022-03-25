@@ -28,6 +28,10 @@ public class NueralNetwork : MonoBehaviour
         }
         return tmp;;
     }
+    public float CheckValue(int Index)
+    {
+        return CheckValue(Nodes[Index]);
+    }
     float CheckValueWithWeight(Node node,float weight)
     {
         if(node.Connections.Count==0)
